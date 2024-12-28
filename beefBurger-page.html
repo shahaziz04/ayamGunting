@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="beefBurger-page.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+
+            <button class="icon-button" id="homepage-icon">
+                <i class="fas fa-arrow-left back-icon"></i>  
+            </button>
+            <h2>Food Details</h2>
+            <div class="cart-icon" id="cart-icon">
+                   <!--<button class="icon-button" id="cart-icon">-->
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                    <!--</button>--> 
+            </div>
+        </header>
+
+        <!-- Food Image -->
+        <div class="image-container">
+            <img src="images/beef-burger.png" alt="Beef Burger" class="food-image">
+        </div>
+
+        <!-- Food Card -->
+        <main class="food-card">
+            <h3>Beef Burger</h3>
+            <div class="price-quantity">
+                <p class="price">RM 4.00</p>
+                <div class="quantity-control">
+                    <button class="button decrease">-</button>
+                    <span id="item-count">1</span>
+                    <button class="button increase">+</button>
+                </div>
+            </div>
+            <div class="info">
+                <div class="rating">
+                    <i class="fas fa-star"></i> 4.5
+                </div>
+                <div class="delivery-time">
+                    <i class="fas fa-clock"></i> 10min
+                </div>
+            </div>
+            <p class="description">
+                A juicy beef burger with a BBQ-soaked patty, topped with fresh onions, spicy chili sauce, and creamy mayo. Bold, smoky, and deliciously balanced!
+            </p>
+            
+
+            <button class="button add-to-cart">Add to cart</button>
+        </main>
+    </div>
+
+    <script>
+
+        let itemCount = 0;
+        let cart = [];
+
+        const itemCountDisplay = document.getElementById('item-count');
+        const cartCountDisplay = document.getElementById('cart-count');
+        const decreaseButton = document.querySelector('.decrease');
+        const increaseButton = document.querySelector('.increase');
+        const addToCartButton = document.querySelector('.add-to-cart');
+        const cartIcon = document.getElementById('cart-icon');
+        const homeIconButton = document.getElementById('homepage-icon');
+
+        decreaseButton.addEventListener('click',() => {
+
+            if(itemCount > 0){
+                itemCount--;
+                itemCountDisplay.textContent = itemCount;
+            }
+        });
+
+        increaseButton.addEventListener('click', () => {
+            itemCount++;
+            itemCountDisplay.textContent = itemCount;
+        });
+
+        addToCartButton.addEventListener('click', () => {
+    if (itemCount > 0) {
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItemIndex = storedCart.findIndex(item => item.name === 'Beef Burger');
+
+        if (existingItemIndex > -1) {
+            storedCart[existingItemIndex].quantity += itemCount;
+        } else {
+            storedCart.push({
+                name: 'Beef Burger',
+                price: 4.00,
+                quantity: itemCount,
+                image: 'images/beef-burger.png' // Correct image path
+            });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(storedCart));
+        itemCount = 0;
+        itemCountDisplay.textContent = itemCount;
+        cartCountDisplay.textContent = storedCart.reduce((total, item) => total + item.quantity, 0);
+    } else {
+        alert('Please select at least one item.');
+    }
+});
+
+
+        cartIcon.addEventListener('click', () => {
+            window.location.href = "cart-page.html";
+        });
+        
+        homeIconButton.addEventListener('click', () => {
+            window.location.href = "login-page.html";
+        });
+
+    </script>
+</body>
+</html>
+
