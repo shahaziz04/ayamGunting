@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chat.css">
+    <title>Interactive Chat Page</title>
+    
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="profilepicture.jpeg" alt="Profile Picture">
+            <div>
+                <h3>Ayam gunting's owner</h3>
+                <span>Online</span>
+            </div>
+            <i class="fa fa-phone call-icon"></i>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+        </div>
+
+        <div class="chat-footer">
+            <i class="fa fa-plus add-icon"></i>
+            <input type="text" id="message-input" placeholder="Type here">
+            <button class="send-button" id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const messageInput = document.getElementById('message-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value.trim();
+
+            if (messageText) {
+                addMessage('customer', messageText);
+
+                setTimeout(() => {
+                    addMessage('owner', getOwnerReply(messageText));
+                }, 1000);
+
+                messageInput.value = '';
+            }
+        });
+
+        function addMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getOwnerReply(customerMessage) {
+            if (customerMessage.toLowerCase().includes('ayam sate')) {
+                return 'Noted. We will customize your order.';}
+                if (customerMessage.toLowerCase().includes('beef burger')) {
+                    return 'Noted. We will customize your order.';}
+                    if (customerMessage.toLowerCase().includes('chicken burger')) {
+                        return 'Noted. We will customize your order.';}
+                        if (customerMessage.toLowerCase().includes('double beef')) {
+                            return 'Noted. We will customize your order.';}
+                            if (customerMessage.toLowerCase().includes('double chicken')) {
+                                return 'Noted. We will customize your order.';}
+                                if (customerMessage.toLowerCase().includes('sosej cheese')) {
+                                    return 'Noted. We will customize your order.';}
+                                    if (customerMessage.toLowerCase().includes('special beef')) {
+                                        return 'Noted. We will customize your order.';}
+                                        if (customerMessage.toLowerCase().includes('special chicken')) {
+                                            return 'Noted. We will customize your order.';
+            } else if (customerMessage.toLowerCase().includes('thank')) {
+                return 'You\'re welcome!';
+            } else if (customerMessage.toLowerCase().includes('hello')) {
+                return 'hello customer, may i help you?';
+            } else {
+                return 'Noted. Let me check.';
+            }
+        }
+    </script>
+</body>
+</html>
