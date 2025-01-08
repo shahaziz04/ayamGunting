@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: black;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .header .location {
+            font-size: 0.9rem;
+            color: #BC2C3D;
+        }
+
+        .header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.9rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+        }
+
+        .search-bar button {
+            background-color: #BC2C3D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 10px 20px;
+        }
+
+        .product-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #BC2C3D;
+        }
+
+        .product-card .rating {
+            font-size: 0.8rem;
+            color: #FFD700;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            background-color: #FFFFFF;
+            border-top: 1px solid #E0E0E0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #BC2C3D;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .navigation a img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="location">
+            <select style="font-size: 0.9rem; color: #BC2C3D; border: none; background: none;">
+                <option value="Mahallah asiah, IIUM">Mahallah asiah, IIUM</option>
+                <option value="Mahallah Safiyyah, IIUM">Mahallah Safiyyah, IIUM</option>
+                <option value="Mahallah Aminah, IIUM">Mahallah Aminah, IIUM</option>
+            </select>
+        </div>
+        <img src="profile.jpg" alt="Profile">
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+        <button>🔍</button>
+    </div>
+
+    <div class="products">
+        <div class="product-card">
+            <a href="beefBurger-page.html">
+                <img src="special beef.png" alt="Beef Burger">
+            </a>
+            <h3>Beef Burger</h3>
+            <p>RM 4.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="specialBeef-page.html">
+                <img src="special beef.png" alt="Special Beef">
+            </a>
+            <h3>Special Beef</h3>
+            <p>RM 4.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="doubleBeef-page.html">
+                <img src="double patty.png" alt="Double Beef">
+            </a>
+            <h3>Double Beef</h3>
+            <p>RM 7.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="chickenBurger-page.html">
+                <img src="chicken burger.png" alt="Chicken Burger">
+            </a>
+            <h3>Chicken Burger</h3>
+            <p>RM 4.50</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="specialChicken-page.html">
+                <img src="chicken special.png" alt="Special Chicken">
+            </a>
+            <h3>Special Chicken</h3>
+            <p>RM 5.50</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="doubleChicken-page.html">
+                <img src="double chicken.png" alt="Double Chicken">
+            </a>
+            <h3>Double Chicken</h3>
+            <p>RM 7.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="ayamSate-page.html">
+                <img src="ayam sate.png" alt="Ayam Sate">
+            </a>
+            <h3>Ayam Sate</h3>
+            <p>RM 5.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+        <div class="product-card">
+            <a href="sosejCheese-page.html">
+                <img src="sosej cheese jumbo.png" alt="Sosej Cheese Jumbo">
+            </a>
+            <h3>Sosej Cheese Jumbo</h3>
+            <p>RM 5.00</p>
+            <div class="rating">⭐ 4.5</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="home.html"><img src="ic_baseline-home.png" alt="Home"><br>Home</a>
+        <a href="chat.html"><img src="line-md_chat-filled.png" alt="Chat"><br>Chat</a>
+        <a href="notifications.html"><img src="mdi_bell.png" alt="Notifications"><br>Notifications</a>
+        <a href="cart.html"><img src="Vector.png" alt="Cart"><br>Cart</a>
+    </div>
+</body>
+</html>
