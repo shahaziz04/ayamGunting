@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #BC2C3D;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        .content {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .fpx-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .fpx-logo img {
+            max-width: 150px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #BC2C3D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #A01D2F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            You are paying RM 19.50
+        </div>
+
+        <div class="content">
+            <label for="bank">Select Bank</label>
+            <select id="bank">
+                <option value="">Choose Bank</option>
+                <option value="Maybank">Maybank</option>
+                <option value="CIMB">CIMB</option>
+                <option value="RHB">RHB</option>
+                <option value="Public Bank">Public Bank</option>
+                <option value="Hong Leong Bank">Hong Leong Bank</option>
+            </select>
+
+            <div class="fpx-logo">
+                <img src="FPX Payment.png" alt="FPX Logo">
+            </div>
+
+            <button onclick="processPayment()">Pay RM 19.50</button>
+        </div>
+    </div>
+
+    <script>
+        function processPayment() {
+            const bank = document.getElementById('bank').value;
+            if (!bank) {
+                alert('Please select a bank to proceed.');
+            } else {
+                alert('Your payment is being processed.');
+            }
+        }
+    </script>
+</body>
+</html>
