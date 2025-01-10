@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="signup.css">
-    <title>signUp Form</title>
-
+    <title>SignUp Form</title>
 </head>
 <body>
     <form id="signup-form">
@@ -22,12 +21,12 @@
             <label for="password"><b>Password</b></label>
             <input type="password" id="password" placeholder="Enter Password" name="psw" required>
             
-            <label for="confirm-password"><b>pasword confirmation</b></label>
+            <label for="confirm-password"><b>Password Confirmation</b></label>
             <input type="password" id="confirm-password" placeholder="Confirmation Password" name="confirm-psw" required>
 
             <div class="checkbox-container">
-            <input type="checkbox" id="terms-checkbox" name="checkbox" value="checkbox">
-            <label for="terms-checkbox"> I accept terms of service and privacy policy</label><br>
+                <input type="checkbox" id="terms-checkbox" name="checkbox" value="checkbox">
+                <label for="terms-checkbox"> I accept terms of service and privacy policy</label><br>
             </div>
 
             <button type="submit" id="signup-btn" disabled>Sign Up</button>
@@ -37,9 +36,15 @@
     <script>
         const checkbox = document.getElementById('terms-checkbox');
         const signupButton = document.getElementById('signup-btn');
+        const form = document.getElementById('signup-form');
 
         checkbox.addEventListener('change', function() {
             signupButton.disabled = !checkbox.checked;
+        });
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            window.location.href = "http://127.0.0.1:5500/home.html";
         });
     </script>
 </body>
