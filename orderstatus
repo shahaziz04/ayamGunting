@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="orderstatus.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Order Status</title>
+</head>
+<body>
+    <div class="order-status">
+        <header>
+            <i class="fa fa-times close-icon" id="close-popup"></i>
+            <h2>Order Status</h2>
+        </header>
+        <div class="status-timeline">
+            <div class="status">
+                <div class="status-circle completed"></div>
+                <p>Order Confirmed<br></p>
+            </div>
+            <div class="status">
+                <div class="status-circle completed"></div>
+                <p>Preparing the order<br></p>
+            </div>
+            <div class="status">
+                <div class="status-circle"></div>
+                <p>Order is complete</p>
+            </div>
+        </div>
+        <div class="order-details">
+            <h3>Order Code: <span id="order-code">Loading...</span></h3>
+            <ul id="order-items">
+                <!-- Items dynamically added here -->
+            </ul>
+            <div class="totals">
+                <p>Subtotal: <span id="subtotal">Loading...</span></p>
+                <p>Grand Total: <span id="grand-total">Loading...</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Fetch data dynamically from localStorage
+        function loadOrderData() {
+            const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+            const orderCode = JSON.parse(localStorage.getItem("orderCode")) || "N/A";
+            const subtotal = JSON.parse(localStorage.getItem("subtotal")) || "RM 0.00";
+
+            // Populate order code
+            document.getElementById('order-code').textContent = orderCode;
+            
+            // Populate order items
+            const itemsContainer = document.getElementById('order-items');
+            itemsContainer.innerHTML = ''; // Clear existing items
+            cartItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - QTY ${item.quantity} `;
+                itemsContainer.appendChild(listItem);
+            });
+
+            // Populate totals
+            document.getElementById('subtotal').textContent = subtotal;
+            document.getElementById('grand-total').textContent = subtotal; // Assuming subtotal = grand total
+        }
+
+        // Close popup functionality
+        document.getElementById('close-popup').addEventListener('click', () => {
+            window.location.href = 'home.html'; // Redirect to home page
+        });
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadOrderData);
+    </script>
+</body>
+</html>
