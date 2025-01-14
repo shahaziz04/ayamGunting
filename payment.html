@@ -108,19 +108,49 @@
                 <img src="FPX Payment.png" alt="FPX Logo">
             </div>
 
-            <button onclick="processPayment()">Pay RM 19.50</button>
+            <button id="payButton">Pay RM 19.50</button>
         </div>
     </div>
 
     <script>
-        function processPayment() {
+        document.getElementById('payButton').addEventListener('click', async () => {
             const bank = document.getElementById('bank').value;
+
             if (!bank) {
                 alert('Please select a bank to proceed.');
-            } else {
-                alert('Your payment is being processed.');
+                return;
             }
-        }
+
+            // api 
+            const paymentDetails = {
+                amount: 19.50,
+                currency: 'MYR',
+                bank: bank,
+                description: 'Order Payment',
+            };
+
+            try {
+                const response = await fetch('https://mock-payment-api.example.com/pay', { // Replace with actual API
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(paymentDetails),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(`Payment successful! Transaction ID: ${result.transactionId}`);
+                    window.location.href = 'orderstatus.html'; // Redirect to order status
+                } else {
+                    alert(`Payment failed: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                alert('An error occurred while processing your payment. Please try again.');
+            }
+        });
     </script>
 </body>
 </html>
