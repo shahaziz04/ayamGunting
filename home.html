@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -114,9 +115,12 @@
             text-align: center;
         }
 
-        .navigation a img {
-            width: 24px;
-            height: 24px;
+        .navigation a i {
+            font-size: 20px;
+        }
+
+        .navigation a .fa-shopping-cart {
+            color: black;
         }
     </style>
 </head>
@@ -129,7 +133,7 @@
                 <option value="Mahallah Aminah, IIUM">Mahallah Aminah, IIUM</option>
             </select>
         </div>
-        <img src="profile.jpg" alt="Profile">
+        <img src="profilepicture.jpeg" alt="Profile">
     </div>
 
     <div class="search-bar">
@@ -205,10 +209,10 @@
     </div>
 
     <div class="navigation">
-        <a href="home.html"><img src="ic_baseline-home.png" alt="Home"><br>Home</a>
-        <a href="chat.html"><img src="line-md_chat-filled.png" alt="Chat"><br>Chat</a>
-        <a href="notifications.html"><img src="mdi_bell.png" alt="Notifications"><br>Notifications</a>
-        <a href="cart.html"><img src="Vector.png" alt="Cart"><br>Cart</a>
+        <a href="home.html"><i class="fas fa-home"></i><br>Home</a>
+        <a href="chat.html"><i class="fas fa-comments"></i><br>Chat</a>
+        <a href="orderstatus.html"><i class="fas fa-bell"></i><br>Notifications</a>
+        <a href="cart-page.html"><i class="fas fa-shopping-cart"></i><br>Cart</a>
     </div>
 </body>
 </html>
