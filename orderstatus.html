@@ -39,6 +39,14 @@
         </div>
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fetch total price from local storage
+            const totalPrice = localStorage.getItem("cartTotal") || 0;
+
+            // Update displayed amounts
+            document.getElementById("subtotal").textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`;
+            document.getElementById("grand-total").textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`;
+        });
         // Fetch data dynamically from localStorage
         function loadOrderData() {
             const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -58,8 +66,8 @@
             });
 
             // Populate totals
-            document.getElementById('subtotal').textContent = subtotal;
-            document.getElementById('grand-total').textContent = subtotal; // Assuming subtotal = grand total
+            document.getElementById('subtotal').textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`;
+            document.getElementById('grand-total').textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`; // Assuming subtotal = grand total
         }
 
         // Close popup functionality
