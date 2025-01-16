@@ -263,6 +263,8 @@ body {
 
     totalItemsElement.textContent = totalItems;
     totalPriceElement.textContent = totalPrice.toFixed(2);
+    localStorage.setItem("cartTotal", totalPrice.toFixed(2));
+
 }
 
 
