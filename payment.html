@@ -90,7 +90,7 @@
 <body>
     <div class="container">
         <div class="header">
-            You are paying RM 19.50
+            You are paying <span id="amount-display">RM 0.00</span>
         </div>
 
         <div class="content">
@@ -108,12 +108,22 @@
                 <img src="FPX Payment.png" alt="FPX Logo">
             </div>
 
-            <button id="payButton">Pay RM 19.50</button>
+            
+            <button id="payButton">Pay <span id="pay-amount">RM 0.00</span></button>
         </div>
     </div>
 
     <script>
-        document.getElementById('payButton').addEventListener('click', async () => {
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fetch total price from local storage
+            const totalPrice = localStorage.getItem("cartTotal") || 0;
+
+            // Update displayed amounts
+            document.getElementById("amount-display").textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`;
+            document.getElementById("pay-amount").textContent = `RM ${parseFloat(totalPrice).toFixed(2)}`;
+        });
+        
+        document.getElementById('payButton').addEventListener('click', () => {
             const bank = document.getElementById('bank').value;
 
             if (!bank) {
@@ -121,35 +131,10 @@
                 return;
             }
 
-            // api 
-            const paymentDetails = {
-                amount: 19.50,
-                currency: 'MYR',
-                bank: bank,
-                description: 'Order Payment',
-            };
-
-            try {
-                const response = await fetch('https://mock-payment-api.example.com/pay', { // Replace with actual API
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(paymentDetails),
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert(`Payment successful! Transaction ID: ${result.transactionId}`);
-                    window.location.href = 'orderstatus.html'; // Redirect to order status
-                } else {
-                    alert(`Payment failed: ${result.message}`);
-                }
-            } catch (error) {
-                console.error('Payment error:', error);
-                alert('An error occurred while processing your payment. Please try again.');
-            }
+            setTimeout(() => {
+                alert('Payment successful! Transaction ID: TEST12345');
+                window.location.href = 'home.html'; 
+            }, 2000); 
         });
     </script>
 </body>
