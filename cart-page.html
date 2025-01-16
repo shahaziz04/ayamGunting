@@ -212,6 +212,7 @@ body {
       const totalItemsElement = document.getElementById("total-items");
       const totalPriceElement = document.getElementById("total-price");
       const orderCodeElement = document.getElementById("order-code");
+      const checkoutButton = document.querySelector('.checkout-btn'); 
 
       // Generate an order code
       function generateOrderCode() {
@@ -223,19 +224,18 @@ body {
         return code;
       }
 
-      // Set the order code (only once)
+    
       orderCodeElement.textContent = generateOrderCode();
 
       // Load cart items from localStorage
       const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
       function renderCart() {
-    cartContainer.innerHTML = ""; // Clear previous content
+    cartContainer.innerHTML = ""; 
     let totalItems = 0;
     let totalPrice = 0;
 
     cartItems.forEach((item, index) => {
-        // Use the item's image or fall back to the placeholder image
         const itemImage = item.image || "images/placeholder.png";
 
         const cartItem = document.createElement("div");
@@ -266,25 +266,29 @@ body {
 }
 
 
-      // Update item quantity
+      
       window.updateQuantity = (index, amount) => {
         if (cartItems[index].quantity + amount > 0) {
           cartItems[index].quantity += amount;
         } else {
-          cartItems.splice(index, 1); // Remove item if quantity is zero
+          cartItems.splice(index, 1); 
         }
         localStorage.setItem("cart", JSON.stringify(cartItems));
         renderCart();
       };
 
-      // Remove item
+    
       window.removeItem = (index) => {
         cartItems.splice(index, 1);
         localStorage.setItem("cart", JSON.stringify(cartItems));
         renderCart();
       };
 
-      // Initial render
+      checkoutButton.addEventListener('click', function() {
+    window.location.href = "payment.html"; // Redirect to payment page
+     });
+
+    
       renderCart();
     });
   </script>
